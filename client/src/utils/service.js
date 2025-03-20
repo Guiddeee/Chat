@@ -1,7 +1,7 @@
 export const baseUrl = "http://localhost:5000/api";
 
 export const postRequest = async (url, body) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwMDE3MTIwNTExMjgwMDAwMDIyNCIsImlhdCI6MTc0MjI0NDk2OCwiZXhwIjoxNzQyMzMxMzY4fQ.Pyic1ijRZx542Ikupaqhy5ArZ6snidxK-AZfab80m6U';
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwMDE3OTEwNjg1MjgwMDAwMDIzMyIsImlhdCI6MTc0MjQ0NzA3NiwiZXhwIjoxNzQyNTMzNDc2fQ.LdEdPH3LWXug_JdUD-Ms8eEp4GJ5Je2xCE4K5rRmCI8';
   console.log('Post request')
   const response = await fetch(url, {
     method: "POST",
@@ -30,7 +30,7 @@ export const postRequest = async (url, body) => {
 };
 
 export const getRequest = async (url) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwMDE3MTIwNTExMjgwMDAwMDIyNCIsImlhdCI6MTc0MjI0NDk2OCwiZXhwIjoxNzQyMzMxMzY4fQ.Pyic1ijRZx542Ikupaqhy5ArZ6snidxK-AZfab80m6U';
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwMDE3OTEwNjg1MjgwMDAwMDIzMyIsImlhdCI6MTc0MjQ0NzA3NiwiZXhwIjoxNzQyNTMzNDc2fQ.LdEdPH3LWXug_JdUD-Ms8eEp4GJ5Je2xCE4K5rRmCI8';
   console.log('Get request')
   const response = await fetch(url, {
     method: "GET",
