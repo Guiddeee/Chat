@@ -1,28 +1,26 @@
-export const baseUrl = "http://localhost:5000/api";
+export const baseUrl = "https://backend-cu-recom.up.railway.app/api";
+
+const getToken = () => {
+  return sessionStorage.getItem("authToken") || "";
+};
 
 export const postRequest = async (url, body) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwMDE3OTEwNjg1MjgwMDAwMDIzMyIsImlhdCI6MTc0MjQ0NzA3NiwiZXhwIjoxNzQyNTMzNDc2fQ.LdEdPH3LWXug_JdUD-Ms8eEp4GJ5Je2xCE4K5rRmCI8';
-  console.log('Post request')
+  const token = getToken();
+  console.log("Post request with token:", token);
+
   const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}` 
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(body),
   });
-  
+
   const data = await response.json();
 
   if (!response.ok) {
-    let message;
-
-    if (data?.message) {
-      message = data.message;
-    } else {
-      message = data;
-    }
-
+    let message = data?.message || "An error occurred...";
     return { error: true, status: response.status, message };
   }
 
@@ -30,28 +28,20 @@ export const postRequest = async (url, body) => {
 };
 
 export const getRequest = async (url) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwMDE3OTEwNjg1MjgwMDAwMDIzMyIsImlhdCI6MTc0MjQ0NzA3NiwiZXhwIjoxNzQyNTMzNDc2fQ.LdEdPH3LWXug_JdUD-Ms8eEp4GJ5Je2xCE4K5rRmCI8';
-  console.log('Get request')
+  const token = getToken();
+  console.log("Get request with token:", token);
+
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      "Authorization": `Bearer ${token}` 
+      "Authorization": `Bearer ${token}`
     }
   });
 
-  console.log("Response:", response);
-
   const data = await response.json();
 
-  console.log("Data",data);
-
   if (!response.ok) {
-    let message = "An error occured...";
-
-    if (data?.message) {
-      message = data.message;
-    }
-
+    let message = data?.message || "An error occurred...";
     return { error: true, status: response.status, message };
   }
 
